@@ -5,22 +5,18 @@ int stepLength = 250; // default, in milliseconds.
 int ledPins[4] = {0, 1, 2, 3}; // not including ground.
 int currentStep; // 0-3 (4 steps)
 
+// specific analog reading row pins
 int potMatrixPins[4][5] =
 {
   {A0, A1, A2, A3, A4},
   {A5, A6, A7, A8, A9},
   {A13, A14, A15, A16, A17},
   {A18, A19, A20, A21, A22},
-}
+};
 
 int potMatrix[4][5];
 
-int rowPowerPins[4] = {8, 9, 10, 11}; // not including ground
-
-
-// specific analog reading row pins
-
-
+int rowPowerPins[4] = {9,10,11,12}; // not including ground
 
 void setup()
 {
@@ -50,20 +46,33 @@ void loop()
   Serial.print(" currentStep = ");
   Serial.println(currentStep);
 
-
-
-
   // turning on power.
   digitalWrite(rowPowerPins[currentStep], HIGH);
   digitalWrite(ledPins[currentStep], HIGH);
 
   //read pot values for the row.
-  for (int i = 0; i < 4; i++)
+  // If you make this a double for loop,
+  // you will always be reading zero values on the other rows!
+  for (int j = 0; j < 5; j++)
   {
-    for (int j = 0; j < 5; j++)
-    {
-      potMatrix[i][j] = analogRead(potMatrixPins[i][j]);
-    }
+    potMatrix[currentStep][j] = analogRead(potMatrixPins[currentStep][j]);
+  }
+
+  // debug
+  for (int j = 0; j < 5; j++)
+  {
+    Serial.print("pot # ");
+    Serial.print(j);
+    Serial.print(" = ");
+    Serial.print(analogRead(potMatrixPins[currentStep][j])  );
+    Serial.print(" ");
+  }
+  Serial.println();
+
+  // debug
+  if((currentStep == 3 || currentStep == 4) && digitalRead(rowPowerPins[currentStep]))
+  {
+    Serial.println("It's working!");
   }
 
   delay(stepLength);
