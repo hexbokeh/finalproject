@@ -43,9 +43,9 @@ void loop()
   // debug
   //  Serial.print("current power pin: ");
   //  Serial.print(rowPowerPins[currentStep]);
-  //  Serial.print(" currentStep = ");
-  //  Serial.print(currentStep);
-  //  Serial.print(" ");
+  //    Serial.print(" currentStep = ");
+  //    Serial.print(currentStep);
+  //    Serial.print(" ");
 
   // turning on power.
   digitalWrite(rowPowerPins[currentStep], HIGH);
@@ -60,16 +60,19 @@ void loop()
   }
 
   // debug
-  //  for (int j = 0; j < 5; j++)
-  //  {
-  //    Serial.print("pot # ");
-  //    Serial.print(j);
-  //    Serial.print(" = ");
-  //    Serial.print(potMatrix[currentStep][j]);
-  //    Serial.print(" ");
-  //  }
+  if (currentStep == 2)
+  {
+    for (int j = 0; j < 5; j++)
+    {
+      Serial.print("pot # ");
+      Serial.print(j);
+      Serial.print(" = ");
+      Serial.print(potMatrix[currentStep][j]);
+      Serial.print(" ");
+    }
+  }
 
-  Serial.println(potMatrix[currentStep][4]);
+  //  Serial.println(potMatrix[currentStep][4]);
   Serial.println();
 
   // debug
