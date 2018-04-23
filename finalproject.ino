@@ -8,15 +8,15 @@ int currentStep; // 0-3 (4 steps)
 // specific analog reading row pins
 int potMatrixPins[4][5] =
 {
-  {A0, A1, A2, A3, A4},
-  {A5, A6, A7, A8, A9},
+  {A4, A3, A2, A1, A0},
+  {A9, A8, A7, A6, A5},
   {A13, A14, A15, A16, A17},
   {A18, A19, A20, A21, A22},
-};
+};// possibly reverse orders within each row?????
 
 int potMatrix[4][5];
 
-int rowPowerPins[4] = {9,10,11,12}; // not including ground
+int rowPowerPins[4] = {12, 11, 10, 9}; // not including ground
 
 void setup()
 {
@@ -41,10 +41,11 @@ void loop()
   // a should correspond to the step (in this case, the row of the array)
 
   // debug
-  Serial.print("current power pin: ");
-  Serial.print(rowPowerPins[currentStep]);
+  //  Serial.print("current power pin: ");
+  //  Serial.print(rowPowerPins[currentStep]);
   Serial.print(" currentStep = ");
-  Serial.println(currentStep);
+  Serial.print(currentStep);
+  Serial.print(" ");
 
   // turning on power.
   digitalWrite(rowPowerPins[currentStep], HIGH);
@@ -59,21 +60,23 @@ void loop()
   }
 
   // debug
-  for (int j = 0; j < 5; j++)
-  {
-    Serial.print("pot # ");
-    Serial.print(j);
-    Serial.print(" = ");
-    Serial.print(analogRead(potMatrixPins[currentStep][j])  );
-    Serial.print(" ");
-  }
+  //  for (int j = 0; j < 5; j++)
+  //  {
+  //    Serial.print("pot # ");
+  //    Serial.print(j);
+  //    Serial.print(" = ");
+  //    Serial.print(potMatrix[currentStep][j]);
+  //    Serial.print(" ");
+  //  }
+
+  Serial.println(1023 - analogRead(potMatrixPins[currentStep][4]));
   Serial.println();
 
   // debug
-  if((currentStep == 3 || currentStep == 4) && digitalRead(rowPowerPins[currentStep]))
-  {
-    Serial.println("It's working!");
-  }
+  //  if((currentStep == 3 || currentStep == 4) && digitalRead(rowPowerPins[currentStep]))
+  //  {
+  //    Serial.println("It's working!");
+  //  }
 
   delay(stepLength);
 
