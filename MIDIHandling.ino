@@ -15,7 +15,8 @@ void txMIDI()
   //
   //  }
 
-  if (lastMIDI[0] != currentMIDI[0])
+  //if (lastMIDI[0] != currentMIDI[0])
+    //  if (lastStep != currentStep)
   {
     // turn off previous note
     usbMIDI.sendNoteOff(lastMIDI[1], 0, 1);

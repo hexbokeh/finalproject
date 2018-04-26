@@ -4,6 +4,7 @@
 int stepLength = 250; // default, in milliseconds.
 int ledPins[4] = {0, 1, 2, 3}; // not including ground.
 int currentStep; // 0-3 (4 steps)
+int lastStep;
 
 // specific analog reading row pins
 int potMatrixPins[4][5] =
