@@ -88,7 +88,7 @@ void loop()
   //    Serial.println("It's working!");
   //  }
 
-  stepLength = map(potMatrix[currentStep][4], 20, 255, 10, 750); // 20 seems to be as low as they go.
+  stepLength = map(potMatrix[currentStep][4], 20, 255, 1, 750); // 20 seems to be as low as they go.
   delay(stepLength);
 
   // turning off power.
