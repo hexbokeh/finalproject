@@ -16,12 +16,16 @@ void txMIDI()
   //  }
 
   //if (lastMIDI[0] != currentMIDI[0])
-    //  if (lastStep != currentStep)
+  //  if (lastStep != currentStep)
   {
     // turn off previous note
-    usbMIDI.sendNoteOff(lastMIDI[1], 0, 1);
+    usbMIDI.sendNoteOff(lastMIDI[3], 0, 1);
+
+    // control change
+    usbMIDI.sendControlChange(10, currentMIDI[2], 1);
+
     // turn on next note
-    usbMIDI.sendNoteOn(currentMIDI[1], 100, 1);
+    usbMIDI.sendNoteOn(currentMIDI[3], 100, 1);
   }
 
 }
