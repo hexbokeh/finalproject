@@ -18,7 +18,8 @@ int potMatrix[4][5];
 
 int rowPowerPins[4] = {12, 11, 10, 9}; // not including ground
 
-int midiValues[5];
+int currentMIDI[5];
+int lastMIDI[5];
 
 void setup()
 {
@@ -83,6 +84,7 @@ void loop()
 
 
   transmitSerial(); //******** Where the magic happens.
+  txMIDI();
 
   // debug
   //  if((currentStep == 3 || currentStep == 4) && digitalRead(rowPowerPins[currentStep]))
