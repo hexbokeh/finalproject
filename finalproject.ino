@@ -18,6 +18,8 @@ int potMatrix[4][5];
 
 int rowPowerPins[4] = {12, 11, 10, 9}; // not including ground
 
+int midiValues[5];
+
 void setup()
 {
   Serial.begin(9600);
