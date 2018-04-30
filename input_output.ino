@@ -1,16 +1,8 @@
 void inputMode()
 {
-  digitalWrite(rowPowerPins[currentStep], HIGH);
-  digitalWrite(ledPins[currentStep], HIGH);
+  
 
-  readPotValues();
 
-  transmitSerial();
-
-  digitalWrite(rowPowerPins[currentStep], LOW);
-  digitalWrite(ledPins[currentStep], LOW);
-  currentStep ++;
-  currentStep %= 4;
 }
 
 void inputSetup()
@@ -18,7 +10,7 @@ void inputSetup()
   Serial.begin(31250);
   usbMIDI.setHandleNoteOn(myNoteOn);
   usbMIDI.setHandleNoteOff(myNoteOff);
-  usbMIDI.setHandleControlChange(myControlChange);
+//  usbMIDI.setHandleControlChange(myControlChange);
 }
 
 

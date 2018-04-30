@@ -12,7 +12,7 @@ void txMIDI()
   calculateMIDI();
 
   if (lastMIDI[0] != currentMIDI[0])
-  //  if (lastStep != currentStep)
+    //  if (lastStep != currentStep)
   {
     // turn off previous note
     usbMIDI.sendNoteOff(lastMIDI[0], 0, 1);
@@ -29,11 +29,22 @@ void txMIDI()
 
 void myNoteOn()
 {
-  
+  digitalWrite(rowPowerPins[currentStep], HIGH);
+  digitalWrite(ledPins[currentStep], HIGH);
+
+  readPotValues();
+
+  transmitSerial();
 }
 
 void myNoteOff()
+{
+  digitalWrite(rowPowerPins[currentStep], LOW);
+  digitalWrite(ledPins[currentStep], LOW);
+  currentStep ++;
+  currentStep %= 4;
+}
 
-void myControlChange()
+//void myControlChange()
 
 
