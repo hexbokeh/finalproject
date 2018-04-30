@@ -28,6 +28,9 @@ void txMIDI()
 
 
 void myNoteOn()
+{
+  
+}
 
 void myNoteOff()
 
