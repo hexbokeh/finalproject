@@ -42,7 +42,7 @@ void setup()
   
   //Serial.begin(9600);
   
-  Serial.begin(31250);
+  //Serial.begin(31250);
   // needs debugging
   
 //  Serial.println("Input or output mode? (type i or o)");
@@ -61,6 +61,8 @@ void setup()
 //    modeState = 2;
 //    //outputMode();
 //  }
+
+  inputSetup();
   
 }
 
