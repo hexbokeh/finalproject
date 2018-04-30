@@ -22,7 +22,7 @@ int rowPowerPins[4] = {12, 11, 10, 9}; // not including ground
 int currentMIDI[5];
 int lastMIDI[5];
 
-int modeState = 2;
+int modeState = 1;
 
 void setup()
 {
@@ -44,9 +44,11 @@ void setup()
 
   //Serial.begin(31250);
 
-  inputSetup();
-
   // needs debugging
+
+  Serial.begin(115200);
+  usbMIDI.setHandleNoteOn(myNoteOn);
+  usbMIDI.setHandleNoteOff(myNoteOff);
 
   //  Serial.println("Input or output mode? (type i or o)");
   //  while (Serial.available() == 0) {} // wait for user input.
@@ -64,12 +66,16 @@ void setup()
   //    modeState = 2;
   //    //outputMode();
   //  }
-
 }
 
 void loop()
 {
-  if (modeState == 1) inputMode();
+  if (modeState == 1)
+  {
+
+    inputMode();
+  }
+
   if (modeState == 2) outputMode();
 }
 

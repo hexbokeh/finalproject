@@ -1,8 +1,7 @@
 void inputMode()
 {
-  Serial.begin(31250);
-  usbMIDI.setHandleNoteOn(myNoteOn);
-  usbMIDI.setHandleNoteOff(myNoteOff);
+  usbMIDI.read();
+  
 //  usbMIDI.setHandleControlChange(myControlChange);
 }
 
