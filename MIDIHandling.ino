@@ -26,3 +26,11 @@ void txMIDI()
 
 }
 
+
+void myNoteOn()
+
+void myNoteOff()
+
+void myControlChange()
+
+

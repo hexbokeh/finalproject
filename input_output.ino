@@ -1,6 +1,6 @@
 void inputMode()
 {
-  
+
 }
 
 void inputSetup()
@@ -32,11 +32,8 @@ void outputMode()
   //read pot values for the row.
   // If you make this a double for loop,
   // you will always be reading zero values on the other rows!
-  for (int j = 0; j < 5; j++)
-  {
-    potMatrix[currentStep][j] = 1023 - analogRead(potMatrixPins[currentStep][j]);
-    potMatrix[currentStep][j] = map(potMatrix[currentStep][j], 0, 1023, 0, 255);
-  }
+  readPotValues();
+
 
   // debug
   //  if (currentStep == 2)
@@ -77,5 +74,14 @@ void outputMode()
   currentStep %= 4;
   // debug
   // currentStep = 0;
+}
+
+void readPotValues()
+{
+  for (int j = 0; j < 5; j++)
+  {
+    potMatrix[currentStep][j] = 1023 - analogRead(potMatrixPins[currentStep][j]);
+    potMatrix[currentStep][j] = map(potMatrix[currentStep][j], 0, 1023, 0, 255);
+  }
 }
 

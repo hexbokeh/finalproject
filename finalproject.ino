@@ -26,7 +26,7 @@ int modeState = 2;
 
 void setup()
 {
-  
+
 
   for (int i = 0; i < 4; i++)
   {
@@ -38,38 +38,39 @@ void setup()
     pinMode(rowPowerPins[i], OUTPUT);
   }
 
-  
-  
+
+
   //Serial.begin(9600);
-  
+
   //Serial.begin(31250);
-  // needs debugging
-  
-//  Serial.println("Input or output mode? (type i or o)");
-//  while (Serial.available() == 0) {} // wait for user input.
-//  char c = Serial.read();
-//  if (c == 'i') 
-//  {
-//    modeState = 1;
-//    
-//    // debug
-//    Serial.println("Success, inputMode activated");
-//    //inputMode();
-//  }
-//  if (c == 'o') 
-//  {
-//    modeState = 2;
-//    //outputMode();
-//  }
 
   inputSetup();
-  
+
+  // needs debugging
+
+  //  Serial.println("Input or output mode? (type i or o)");
+  //  while (Serial.available() == 0) {} // wait for user input.
+  //  char c = Serial.read();
+  //  if (c == 'i')
+  //  {
+  //    modeState = 1;
+  //
+  //    // debug
+  //    Serial.println("Success, inputMode activated");
+  //    //inputMode();
+  //  }
+  //  if (c == 'o')
+  //  {
+  //    modeState = 2;
+  //    //outputMode();
+  //  }
+
 }
 
 void loop()
 {
-  if(modeState == 1) inputMode();
-  if(modeState == 2) outputMode();
+  if (modeState == 1) inputMode();
+  if (modeState == 2) outputMode();
 }
 
 
