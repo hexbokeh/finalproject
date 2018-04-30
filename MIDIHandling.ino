@@ -29,13 +29,12 @@ void txMIDI()
 
 void myNoteOn(byte channel, byte note, byte velocity)
 {
-  Serial.println("successful on");
+  //Serial.println("successful on");
   digitalWrite(rowPowerPins[currentStep], HIGH);
   digitalWrite(ledPins[currentStep], HIGH);
 
   readPotValues();
-
-  //transmitSerial();
+  transmitSerial();
 
 
   // debug
@@ -50,7 +49,7 @@ void myNoteOff(byte channel, byte note, byte velocity)
   currentStep %= 4;
   
   // debug
-  Serial.println("successful off");
+  //Serial.println("successful off");
 }
 
 
