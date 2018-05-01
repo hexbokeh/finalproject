@@ -6,6 +6,8 @@ int ledPins[4] = {0, 1, 2, 3}; // not including ground.
 int currentStep; // 0-3 (4 steps)
 int lastStep;
 
+int switchPin = 28;
+
 // specific analog reading row pins
 int potMatrixPins[4][5] =
 {
@@ -27,6 +29,7 @@ int modeState = 1;
 void setup()
 {
 
+  pinMode(switchPin, INPUT);
 
   for (int i = 0; i < 4; i++)
   {
@@ -70,13 +73,19 @@ void setup()
 
 void loop()
 {
-  if (modeState == 1)
-  {
 
+  //if (modeState == 1)
+  if (digitalRead(switchPin)) // if the switch is set to on/HIGH, go into input mode.
+  {
     inputMode();
   }
 
-  if (modeState == 2) outputMode();
+  //if (modeState == 2)
+  else
+  {
+    outputMode();
+  }
+
 }
 
 
