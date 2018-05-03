@@ -25,7 +25,7 @@ void outputMode()
   //******** Where the magic happens.
   
   txMIDI();
-  //transmitSerial();
+  transmitSerial();
 
   stepLength = map(potMatrix[currentStep][4], 20, 255, 1, 750); // 20 seems to be as low as they go.
   delay(stepLength);
