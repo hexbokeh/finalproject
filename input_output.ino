@@ -23,8 +23,9 @@ void outputMode()
   //Serial data to be sent to Processing (or elsewhere).
   // Transmit MIDI to DAW or other compatible instrument.
   //******** Where the magic happens.
-  transmitSerial();
+  
   txMIDI();
+  //transmitSerial();
 
   stepLength = map(potMatrix[currentStep][4], 20, 255, 1, 750); // 20 seems to be as low as they go.
   delay(stepLength);

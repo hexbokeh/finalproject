@@ -14,17 +14,13 @@ void txMIDI()
   // so we first have to "convert" from Serial values to MIDI values.
   calculateMIDI();
 
-  if (lastMIDI[0] != currentMIDI[0]) // detection of change in MIDI note
-  {
-    // Turn off previous note
-    usbMIDI.sendNoteOff(lastMIDI[0], 0, 1);
+  //  if (lastMIDI[0] != currentMIDI[0]) // detection of change in MIDI note
+  //  {
+  // Turn off previous note
+  usbMIDI.sendNoteOff(lastMIDI[0], 0, 1);
 
-    // Control change
-    usbMIDI.sendControlChange(10, currentMIDI[2], 1);
-
-    // Turn on next note
-    usbMIDI.sendNoteOn(currentMIDI[0], 100, 1);
-  }
+  // Turn on next note
+  usbMIDI.sendNoteOn(currentMIDI[0], 100, 1);
 }
 
 // Event handler for when incoming MIDI note detected

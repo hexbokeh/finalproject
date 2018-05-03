@@ -24,6 +24,8 @@ int rowPowerPins[4] = {12, 11, 10, 9}; // not including ground
 int currentMIDI[5]; // outputed/read MIDI per step
 int lastMIDI[5]; // for comparison purposes
 
+int mode = 1;
+
 void setup() // configuring the Teensy for proper functionality.
 {
 
@@ -40,18 +42,29 @@ void setup() // configuring the Teensy for proper functionality.
   }
 
   Serial.begin(115200); // Establishing baud rate for Serial
-  usbMIDI.setHandleNoteOn(myNoteOn); // Establishing which function is called (myNoteOn()) when a note-on MIDI signal is detected
-  usbMIDI.setHandleNoteOff(myNoteOff); // Establishing which function is called (myNoteOff()) when a note-off MIDI signal is detected.
+
+  if (digitalRead(switchPin)) // If the switch is set to on/HIGH, go into input mode.
+  {
+    inputMode();
+    mode = 1;
+  }
+  else // If the switch is set to off/LOW, go into output mode.
+  {
+    mode = 2;
+    outputMode();
+    usbMIDI.setHandleNoteOn(myNoteOn); // Establishing which function is called (myNoteOn()) when a note-on MIDI signal is detected
+    usbMIDI.setHandleNoteOff(myNoteOff); // Establishing which function is called (myNoteOff()) when a note-off MIDI signal is detected.
+  }
+
 }
 
 void loop() // continuously runs during program execution
 {
-  if (digitalRead(switchPin)) // If the switch is set to on/HIGH, go into input mode.
+  while (mode == 1)
   {
     inputMode();
   }
-
-  else // If the switch is set to off/LOW, go into output mode.
+  while (mode == 2) 
   {
     outputMode();
   }
