@@ -47,15 +47,14 @@ void setup() // configuring the Teensy for proper functionality.
   {
     inputMode();
     mode = 1;
+    usbMIDI.setHandleNoteOn(myNoteOn); // Establishing which function is called (myNoteOn()) when a note-on MIDI signal is detected
+    usbMIDI.setHandleNoteOff(myNoteOff); // Establishing which function is called (myNoteOff()) when a note-off MIDI signal is detected.
   }
   else // If the switch is set to off/LOW, go into output mode.
   {
     mode = 2;
     outputMode();
-    usbMIDI.setHandleNoteOn(myNoteOn); // Establishing which function is called (myNoteOn()) when a note-on MIDI signal is detected
-    usbMIDI.setHandleNoteOff(myNoteOff); // Establishing which function is called (myNoteOff()) when a note-off MIDI signal is detected.
   }
-
 }
 
 void loop() // continuously runs during program execution
@@ -64,7 +63,7 @@ void loop() // continuously runs during program execution
   {
     inputMode();
   }
-  while (mode == 2) 
+  while (mode == 2)
   {
     outputMode();
   }
